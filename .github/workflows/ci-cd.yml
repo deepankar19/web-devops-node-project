@@ -42,8 +42,6 @@ jobs:
 
     - name: Push Docker images
       run: |
-        docker tag inter-frontend-app devilvires/inter-frontend-app:01
-        docker tag inter-backend-app devilvires/inter-backend-app:01
         docker push devilvires/inter-frontend-app:01
         docker push devilvires/inter-backend-app:01
 

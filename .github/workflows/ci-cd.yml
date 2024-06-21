@@ -42,8 +42,8 @@ jobs:
 
     - name: Push Docker images
       run: |
-        docker tag inter-frontend-app devilvires/intern-frontend-app:01
-        docker tag inter-backend-app devilvires/backend-app:01
+        docker tag inter-frontend-app devilvires/inter-frontend-app:01
+        docker tag inter-backend-app devilvires/inter-backend-app:01
         docker push devilvires/inter-frontend-app:01
         docker push devilvires/inter-backend-app:01
 
@@ -56,4 +56,13 @@ jobs:
 
 # - name: Deploy to ECS
 #   run: |
-#     # Add your ECS deployment commands here
+# # Install kubectl
+# curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/kubectl
+# chmod +x ./kubectl
+# sudo mv ./kubectl /usr/local/bin/
+
+# # Update kubeconfig
+# aws eks update-kubeconfig --region us-east-1 --name your-cluster-name
+
+# # Deploy Kubernetes resources
+# kubectl apply -f k8s/

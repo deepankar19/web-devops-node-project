@@ -73,3 +73,41 @@ resource "aws_iam_role_policy_attachment" "eks_service_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = aws_iam_role.eks.name
 }
+  
+# resource "helm_release" "prometheus" {
+#   name       = "prometheus"
+#   repository = "https://prometheus-community.github.io/helm-charts"
+#   chart      = "prometheus"
+#   namespace  = "monitoring"
+#   create_namespace = true
+
+#   set {
+#     name  = "alertmanager.persistentVolume.enabled"
+#     value = "false"
+#   }
+
+#   set {
+#     name  = "server.persistentVolume.enabled"
+#     value = "false"
+#   }
+# }
+
+# resource "helm_release" "grafana" {
+#   name       = "grafana"
+#   repository = "https://grafana.github.io/helm-charts"
+#   chart      = "grafana"
+#   namespace  = "monitoring"
+#   create_namespace = true
+
+#   set {
+#     name  = "adminPassword"
+#     value = "admin"
+#   }
+
+#   set {
+#     name  = "persistence.enabled"
+#     value = "false"
+#   }
+
+#   depends_on = [helm_release.prometheus]
+# }
